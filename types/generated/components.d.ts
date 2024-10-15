@@ -49,6 +49,25 @@ export interface PageSectionTech extends Schema.Component {
   };
 }
 
+export interface PageSectionReviews extends Schema.Component {
+  collectionName: 'components_page_section_reviews';
+  info: {
+    displayName: 'sectionReviews';
+    icon: 'star';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    reviews: Attribute.Component<'page.reviews', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 4;
+        },
+        number
+      >;
+  };
+}
+
 export interface PageSectionModules extends Schema.Component {
   collectionName: 'components_page_section_modules';
   info: {
@@ -58,6 +77,25 @@ export interface PageSectionModules extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     modules: Attribute.Component<'page.modules', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 2;
+        },
+        number
+      >;
+  };
+}
+
+export interface PageSectionFaq extends Schema.Component {
+  collectionName: 'components_page_section_faqs';
+  info: {
+    displayName: 'sectionFaq';
+    icon: 'question';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    questions: Attribute.Component<'page.questions', true> &
       Attribute.Required &
       Attribute.SetMinMax<
         {
@@ -122,18 +160,43 @@ export interface PageSectionAboutProject extends Schema.Component {
   };
 }
 
+export interface PageReviews extends Schema.Component {
+  collectionName: 'components_page_reviews';
+  info: {
+    displayName: 'reviews';
+    icon: 'discuss';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    text: Attribute.Text & Attribute.Required;
+    photo: Attribute.Media<'images'>;
+  };
+}
+
+export interface PageQuestions extends Schema.Component {
+  collectionName: 'components_page_questions';
+  info: {
+    displayName: 'questions';
+    icon: 'question';
+  };
+  attributes: {
+    question: Attribute.Text & Attribute.Required;
+    answer: Attribute.Blocks & Attribute.Required;
+  };
+}
+
 export interface PagePricingBox extends Schema.Component {
   collectionName: 'components_page_pricing_boxes';
   info: {
     displayName: 'pricingBox';
     icon: 'shoppingCart';
+    description: '';
   };
   attributes: {
     totalPrice: Attribute.Integer &
       Attribute.Required &
       Attribute.DefaultTo<579>;
-    numberInstallments: Attribute.Integer & Attribute.Required;
-    priceInstallment: Attribute.Integer & Attribute.Required;
+    newPrice: Attribute.Decimal & Attribute.Required;
     benefits: Attribute.Blocks & Attribute.Required;
     button: Attribute.Component<'page.button'> & Attribute.Required;
   };
@@ -200,11 +263,15 @@ declare module '@strapi/types' {
       'page.tech-icons': PageTechIcons;
       'page.social-links': PageSocialLinks;
       'page.section-tech': PageSectionTech;
+      'page.section-reviews': PageSectionReviews;
       'page.section-modules': PageSectionModules;
+      'page.section-faq': PageSectionFaq;
       'page.section-concepts': PageSectionConcepts;
       'page.section-agenda': PageSectionAgenda;
       'page.section-about-us': PageSectionAboutUs;
       'page.section-about-project': PageSectionAboutProject;
+      'page.reviews': PageReviews;
+      'page.questions': PageQuestions;
       'page.pricing-box': PagePricingBox;
       'page.modules': PageModules;
       'page.header': PageHeader;

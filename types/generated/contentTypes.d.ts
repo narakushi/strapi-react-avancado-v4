@@ -850,6 +850,8 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
     pricingBox: Attribute.Component<'page.pricing-box'> & Attribute.Required;
     sectionAboutUs: Attribute.Component<'page.section-about-us'> &
       Attribute.Required;
+    sectionReviews: Attribute.Component<'page.section-reviews'>;
+    sectionFaq: Attribute.Component<'page.section-faq'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

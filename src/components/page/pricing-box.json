@@ -2,7 +2,8 @@
   "collectionName": "components_page_pricing_boxes",
   "info": {
     "displayName": "pricingBox",
-    "icon": "shoppingCart"
+    "icon": "shoppingCart",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,12 +12,8 @@
       "required": true,
       "default": 579
     },
-    "numberInstallments": {
-      "type": "integer",
-      "required": true
-    },
-    "priceInstallment": {
-      "type": "integer",
+    "newPrice": {
+      "type": "decimal",
       "required": true
     },
     "benefits": {
